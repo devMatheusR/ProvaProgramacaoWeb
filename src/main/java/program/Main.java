@@ -8,6 +8,7 @@ import model.AulaDto;
 public class Main {
 
 	public static void main(String[] args) {
+		System.out.println("TESTE");
 		Db db = Db.getInstance();
 
 		ArrayList<AulaDto> lista = db.findAll();

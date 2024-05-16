@@ -18,16 +18,16 @@
 </nav>
 
 <div class="container-geral">
-    <div class="container-aula-edit" id="msg-id" hidden="hidden">
-        <div class="texto">
-            Erro ao tentar registrar dados
+    <div class="container-aula-edit" id="validator" hidden="hidden">
+        <div style="text-align: center;" class="texto">
+            Erro ao tentar registar dados
         </div>
     </div>
     <div class="container-aula-edit">
         <div class="container-linha1">
             <div class="info">Data: <input id="data-id" type="date" class="inp-data"></div>
-            <div class="info">Horário: <input id="hora-id" type="text" class="inp-hora"></div>
-            <div class="info">Duração: <input id="dur-id" type="number" class="inp-dur"></div>
+            <div class="info">Horário: <input id="hora-id" type="time" class="inp-hora"></div>
+            <div class="info">Duração (h): <input id="dur-id" type="number" class="inp-dur"></div>
         </div>
         <div class="container-linha2">
             <div class="info">Disciplina:
@@ -45,7 +45,9 @@
     </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js">
+
+</script>
 
 </body>
 
