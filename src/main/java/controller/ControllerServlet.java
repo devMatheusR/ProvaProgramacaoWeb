@@ -7,15 +7,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
 import model.Aula;
 import model.AulaDto;
-
 import java.io.IOException;
-import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.Random;
-
 import db.Db;
 
  @WebServlet(urlPatterns = { "/prova1", "/nova", "/edit" })
@@ -107,20 +103,14 @@ public class ControllerServlet extends HttpServlet {
 	}
 
 	private void poeDadosNaSessao(HttpSession session) {	
-		
-		Db db = Db.getInstance();
-		
-		ArrayList<AulaDto> aulas = db.findAll();
-		
+		Db banco = Db.getInstance();
+		ArrayList<AulaDto> aulas = banco.findAll();
 		session.setAttribute("lista", aulas);
-	
 	}
 
 	private void reset() {
-		Db db = Db.getInstance();
-		
-		db.reset();
-		
+		Db banco = Db.getInstance();
+		banco.reset();
 	}
 
 	private void create(HttpServletRequest request) {
@@ -142,23 +132,11 @@ public class ControllerServlet extends HttpServlet {
 
 	private void delete(HttpServletRequest request , HttpServletResponse response) {
 		try {
-			
-			Db db =  Db.getInstance();
-			
-			AulaDto aulaDto = db.findById(request.getParameter("id"));
-			
-			if(aulaDto == null) {
-//lancar erro
-			}
-			
-			db.delete(aulaDto.id);
-			
-		}catch (Exception e) {
-			
-			 
+			Db banco =  Db.getInstance();
+			AulaDto aulaDto = banco.findById(request.getParameter("id"));
+			banco.delete(aulaDto.id);
+		}catch (Exception e) {	 
 		}
-		
-		
 	}
 
 	private void getAula(HttpServletRequest request, HttpServletResponse response) {
@@ -176,31 +154,22 @@ public class ControllerServlet extends HttpServlet {
 		try {
 			response.getWriter().write(json);
 		} catch (IOException e) {
-			
-			response.setStatus(400);
 		}
 	}
 	
 	private void update(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			Db db = Db.getInstance();
-			
-			AulaDto existsAula = db.findById(request.getParameter("id"));
-			
-			
-			if(existsAula == null) {
-				//lancar erro
-			}
-			Aula newAula = new Aula();
-			newAula.setId(Long.parseLong(request.getParameter("id")));
-			newAula.setAssunto(request.getParameter("assunto"));
-			newAula.setData(request.getParameter("data"));
-			newAula.setDuracao(Integer.parseInt(request.getParameter("duracao")));
-			newAula.setCodDisciplina(Integer.parseInt(request.getParameter("codDisciplina")));
-			newAula.setHorario(request.getParameter("horario"));
-			AulaDto aulaDto = new AulaDto(newAula);
+			Db banco = Db.getInstance();
+			Aula novaAula = new Aula();
+			novaAula.setHorario(request.getParameter("horario"));
+			novaAula.setId(Long.parseLong(request.getParameter("id")));
+			novaAula.setCodDisciplina(Integer.parseInt(request.getParameter("codDisciplina")));
+			novaAula.setData(request.getParameter("data"));
+			novaAula.setAssunto(request.getParameter("assunto"));
+			novaAula.setDuracao(Integer.parseInt(request.getParameter("duracao")));
+			AulaDto aulaDto = new AulaDto(novaAula);
 			aulaDto.reverteFormatoData();
-			db.update(aulaDto);
+			banco.update(aulaDto);
 		}catch (Exception e) {
 			
 		}

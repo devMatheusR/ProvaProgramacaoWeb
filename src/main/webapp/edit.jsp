@@ -30,8 +30,8 @@
 	<div class="container-geral">
     	<%if(hasError) {%>
     		<div class="container-aula-edit" id="criar-edit-form" >
-        		<div class="texto">
-           			Erro ao tentar buscar os dados
+        		<div style="text-align: center;" class="texto">
+           			Esta aula não existe
            			<button class="btn" onclick="calcelarNovaAula()">Voltar</button>
         		</div>
     		</div><%} %>
