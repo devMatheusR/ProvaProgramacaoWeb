@@ -126,7 +126,7 @@ public class ControllerServlet extends HttpServlet {
 		newAula.setHorario(request.getParameter("horario"));
 		
 		AulaDto aulaDto = new AulaDto(newAula);
-		
+		System.out.println("DENTRO DO CREATE " + newAula.getData());
 		db.create(aulaDto);
 	}
 
@@ -165,9 +165,11 @@ public class ControllerServlet extends HttpServlet {
 			novaAula.setId(Long.parseLong(request.getParameter("id")));
 			novaAula.setCodDisciplina(Integer.parseInt(request.getParameter("codDisciplina")));
 			novaAula.setData(request.getParameter("data"));
+			System.out.println("DATA ANTES DE FORMATAR "+novaAula.getData());
 			novaAula.setAssunto(request.getParameter("assunto"));
 			novaAula.setDuracao(Integer.parseInt(request.getParameter("duracao")));
 			AulaDto aulaDto = new AulaDto(novaAula);
+			System.out.println("DATA DEPOIS DE FORMATAR "+novaAula.getData());
 			aulaDto.reverteFormatoData();
 			banco.update(aulaDto);
 		}catch (Exception e) {

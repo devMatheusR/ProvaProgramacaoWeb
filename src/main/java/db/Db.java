@@ -25,12 +25,12 @@ public class Db {
 		this.confDB();
 		this.conectar();
 		this.criarTabela();
+		this.popularTabela();
 	}
 
 	public static Db getInstance() {
 		if (instance == null) {
 			instance = new Db();
-			
 		}
 		return instance;
 	}
@@ -70,6 +70,7 @@ public class Db {
 			Statement statement = this.connection.createStatement();
 			statement.executeUpdate(query);
 			this.connection.commit();
+			//this.popularTabela();
 		} catch (Exception e) {
 			// TODO: o que fazer se algo deu errado
 		}
@@ -174,24 +175,19 @@ public class Db {
 
 	// CRUD CREATAE
 	public void create(AulaDto dto) {
+		System.out.println("METODO CREATE "+dto);
 		String query = "INSERT INTO AULA (COD_DISCIPLINA, ASSUNTO, DURACAO, DATA, HORARIO) "
 				+ "VALUES (?,?,?,?,?)";
-		
 		try(PreparedStatement st = this.connection.prepareStatement(query)) {
-			
 			dto.reverteFormatoData();
-				
 			st.setString(1, dto.codDisciplina);
 			st.setString(2, dto.assunto);
 			st.setInt(3, Integer.parseInt(dto.duracao));
 			st.setString(4, dto.data);
 			st.setString(5, dto.horario);
-			
 			st.execute();
-			
-			
 		}catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println(e.getMessage()+ " mensagem erro");
 		}
 		
 	}
@@ -258,21 +254,21 @@ public class Db {
 		dto.codDisciplina = "1";
 		dto.assunto = "Derivadas";
 		dto.duracao = "2";
-		dto.data = "2024-04-12";
+		dto.data = "12/04/2024";
 		dto.horario = "14:00";
 		this.create(dto);
 
 		dto.codDisciplina = "3";
 		dto.assunto = "Coordenadas Cartesianas";
 		dto.duracao = "2";
-		dto.data = "2024-04-13";
+		dto.data = "30/06/2024";
 		dto.horario = "14:00";
 		this.create(dto);
 
 		dto.codDisciplina = "4";
 		dto.assunto = "O Problema dos Três Corpos";
 		dto.duracao = "4";
-		dto.data = "2024-04-14";
+		dto.data = "12/08/2024";
 		dto.horario = "14:00";
 		this.create(dto);
 	}

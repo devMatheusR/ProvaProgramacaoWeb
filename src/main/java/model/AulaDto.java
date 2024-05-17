@@ -36,6 +36,7 @@ public class AulaDto {
 	}
 
 	public void reverteFormatoData() {
+		System.out.println("DENTRO DO REVERTE FORMATO DATA");
 		String[] partes = this.data.split("/");
 		this.data = partes[2] + "-" + partes[1] + "-" + partes[0];
 	}
