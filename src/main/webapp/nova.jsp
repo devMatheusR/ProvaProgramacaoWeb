@@ -26,7 +26,7 @@
     <div class="container-aula-edit">
         <div class="container-linha1">
             <div class="info">Data: <input id="data-id" type="date" class="inp-data"></div>
-            <div class="info">Horário: <input id="hora-id" type="time" class="inp-hora"></div>
+            <div class="info">Horário: <input id="hora-id" type="text" class="inp-hora"></div>
             <div class="info">Duração (h): <input id="dur-id" type="number" class="inp-dur"></div>
         </div>
         <div class="container-linha2">

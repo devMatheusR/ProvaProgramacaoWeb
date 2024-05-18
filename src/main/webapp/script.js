@@ -46,8 +46,10 @@ enviarNovaAula = function() {
 	let dataHoje = new Date()
 	console.log("DATA DE HOJE",dataHoje)
 	console.log("DATA FORM",data)
-	let dateTimeString = `${data}T${horario}:00`
-	let dataHojeForm = new Date(dateTimeString);
+	//let dateTimeString = `${data}T${horario}:00`
+	let dataHojeForm = new Date(data);
+	dataHojeForm.setHours(0, 0, 0, 0);
+	dataHoje.setHours(0,0,0,0);
 	    if(dataHojeForm<dataHoje){
 		return document.getElementById('validator').style.display = 'block';
 	}
@@ -100,8 +102,10 @@ enviarEdit = function() {
 	let dataHoje = new Date()
 	console.log("DATA DE HOJE",dataHoje)
 	console.log("DATA FORM",data)
-	let dateTimeString = `${data}T${horario}:00`
-	let dataHojeForm = new Date(dateTimeString);
+	//let dateTimeString = `${data}T${horario}:00`
+	let dataHojeForm = new Date(data);
+	dataHojeForm.setHours(0, 0, 0, 0);
+	dataHoje.setHours(0,0,0,0);
 	    if(dataHojeForm<dataHoje){
 		return document.getElementById('validator').style.display = 'block';
 	}

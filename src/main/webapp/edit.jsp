@@ -49,7 +49,7 @@
     		<div id="id" hidden="hidden"><%=dto.id%></div>
     		<div class="container-linha1">
       			<div class="info">Data: <input id="data-id" type="date" class="inp-data" value="<%=dto.data%>"></div>
-      			<div class="info">Horário: <input id="hora-id" type="time" class="inp-hora" value="<%= dto.horario  %>"></div>
+      			<div class="info">Horário: <input id="hora-id" type="text" class="inp-hora" value="<%= dto.horario  %>"></div>
       			<div class="info">Duração: <input id="dur-id" type="number" class="inp-dur" value="<%= dto.duracao  %>"></div>
     		</div>
     		<div class="container-linha2">
