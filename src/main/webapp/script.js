@@ -43,6 +43,17 @@ enviarNovaAula = function() {
         if(duracao<0){
 		return document.getElementById('validator').style.display = 'block';
 	}
+	let dataHoje = new Date()
+	console.log("DATA DE HOJE",dataHoje)
+	console.log("DATA FORM",data)
+	let dateTimeString = `${data}T${horario}:00`
+	let dataHojeForm = new Date(dateTimeString);
+	    if(dataHojeForm<dataHoje){
+		return document.getElementById('validator').style.display = 'block';
+	}
+	        if(codDisciplina == 0){
+		return document.getElementById('validator').style.display = 'block';
+	}
     const payload = {
 		data,
 		horario,
@@ -84,6 +95,17 @@ enviarEdit = function() {
         return;
     }
     if(duracao<0){
+		return document.getElementById('validator').style.display = 'block';
+	}
+	let dataHoje = new Date()
+	console.log("DATA DE HOJE",dataHoje)
+	console.log("DATA FORM",data)
+	let dateTimeString = `${data}T${horario}:00`
+	let dataHojeForm = new Date(dateTimeString);
+	    if(dataHojeForm<dataHoje){
+		return document.getElementById('validator').style.display = 'block';
+	}
+		        if(codDisciplina == 0){
 		return document.getElementById('validator').style.display = 'block';
 	}
     const payload = {
